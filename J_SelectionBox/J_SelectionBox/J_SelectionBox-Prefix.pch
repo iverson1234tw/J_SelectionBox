@@ -1,0 +1,18 @@
+//
+//  J_SelectionBox-Prefix.pch
+//  J_SelectionBox
+//
+//  Created by iverson1234tw on 2018/3/13.
+//  Copyright © 2018年 JoshChen. All rights reserved.
+//
+
+#ifndef J_SelectionBox_Prefix_pch
+#define J_SelectionBox_Prefix_pch
+
+
+#define SCREEN_WIDTH         [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT         [UIScreen mainScreen].bounds.size.height
+
+#define J_Gray [UIColor colorWithRed:236/255.0f green:236/255.0 blue:236/255.0 alpha:1]
+
+#endif /* J_SelectionBox_Prefix_pch */

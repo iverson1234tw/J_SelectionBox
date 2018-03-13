@@ -50,37 +50,60 @@
         downArrow.userInteractionEnabled = NO;
         
         [_downerBtn addSubview:downArrow];
-        
+                
     }
     
     return self;
 }
 
-#pragma mark - 設置下方說明Label -
+#pragma mark - 設置上/下介紹文字 -
 
-- (void)setIntroduceLabelWithText:(NSString *)text withTextColor:(UIColor *)textC withBackgroundColor:(UIColor *)backC atPosition:(J_IntroduceLabelPosition)position {
+- (void)setShowIntroduceLabel:(BOOL)showIntroduceLabel {
+    
+    if (_showIntroduceLabel != showIntroduceLabel) {
+        
+        _showIntroduceLabel = showIntroduceLabel;
+        
+        [self setIntro];
+        
+    }
+    
+}
 
-    if (position == J_IntroduceLabelAtTop) {
+- (void)setIntro {
+    
+    if (_showIntroduceLabel) {
         
-        UILabel *introLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, -30, self.frame.size.width, 30)];
-        introLabel.backgroundColor = backC;
-        introLabel.textColor = textC;
-        introLabel.text = text;
-        introLabel.textAlignment = NSTextAlignmentCenter;
+        [_introduceLabel removeFromSuperview];
         
-        [self addSubview:introLabel];
+        _introduceLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, _j_introPositon == J_IntroduceLabelAtTop ? _upperBtn.frame.origin.y - 30 : _downerBtn.frame.origin.y + _downerBtn.frame.size.height, self.frame.size.width, 30)];
+        _introduceLabel.textAlignment = NSTextAlignmentCenter;
+        
+        [self addSubview:_introduceLabel];
         
     } else {
         
-        UILabel *introLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, self.frame.size.height, self.frame.size.width, 30)];
-        introLabel.backgroundColor = backC;
-        introLabel.textColor = textC;
-        introLabel.text = text;
-        introLabel.textAlignment = NSTextAlignmentCenter;
-        
-        [self addSubview:introLabel];
+        [_introduceLabel removeFromSuperview];
         
     }
+    
+}
+
+- (void)setJ_introPositon:(J_IntroduceLabelPosition)j_introPositon {
+    
+    if (_j_introPositon != j_introPositon) {
+        
+        _j_introPositon = j_introPositon;
+        
+        [self setIntro];
+        
+    }
+    
+}
+
+- (void)setIntroduceLabel:(UILabel *)introduceLabel {
+    
+    _introduceLabel = introduceLabel;
     
 }
 
@@ -98,41 +121,13 @@
 
 - (void)setUpperBtnImgColor:(UIColor *)upperBtnImgColor {
     
-    UIImage *image = [UIImage imageNamed:@"icon_keyboard_arrow_up_grey72.png"];
-    
-    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextClipToMask(context, rect, image.CGImage);
-    CGContextSetFillColorWithColor(context, [upperBtnImgColor CGColor]);
-    CGContextFillRect(context, rect);
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    UIImage *flippedImage = [UIImage imageWithCGImage:img.CGImage
-                                                scale:1.0 orientation: UIImageOrientationDownMirrored];
-    
-    upArrow.image = flippedImage;
+    upArrow.image = [self setImage:[UIImage imageNamed:@"icon_keyboard_arrow_up_grey72.png"] withColor:upperBtnImgColor];
     
 }
 
 - (void)setDowerBtnImgColor:(UIColor *)dowerBtnImgColor {
     
-    UIImage *image = [UIImage imageNamed:@"icon_keyboard_arrow_down_grey72.png"];
-    
-    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    CGContextClipToMask(context, rect, image.CGImage);
-    CGContextSetFillColorWithColor(context, [dowerBtnImgColor CGColor]);
-    CGContextFillRect(context, rect);
-    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    
-    UIImage *flippedImage = [UIImage imageWithCGImage:img.CGImage
-                                                scale:1.0 orientation: UIImageOrientationDownMirrored];
-    
-    downArrow.image = flippedImage;
+    downArrow.image = [self setImage:[UIImage imageNamed:@"icon_keyboard_arrow_down_grey72.png"] withColor:dowerBtnImgColor];
     
 }
 
@@ -141,6 +136,36 @@
     if (_middleLabel.textColor != middleTextColor) {
         
         _middleLabel.textColor = middleTextColor;
+        
+    }
+    
+}
+
+- (void)setMiddleLabelBackgroundColor:(UIColor *)middleLabelBackgroundColor {
+    
+    if (_middleLabel.backgroundColor != middleLabelBackgroundColor) {
+        
+        _middleLabel.backgroundColor = middleLabelBackgroundColor;
+        
+    }
+    
+}
+
+- (void)setUpperBtnBackgroundColor:(UIColor *)upperBtnBackgroundColor {
+    
+    if (_upperBtn.backgroundColor != upperBtnBackgroundColor) {
+        
+        _upperBtn.backgroundColor = upperBtnBackgroundColor;
+        
+    }
+    
+}
+
+- (void)setDownerBtnBackgroundColor:(UIColor *)downerBtnBackgroundColor {
+    
+    if (_downerBtn.backgroundColor != downerBtnBackgroundColor) {
+        
+        _downerBtn.backgroundColor = downerBtnBackgroundColor;
         
     }
     
@@ -163,6 +188,9 @@
     if (_allowNegativeNumber != allowNegativeNumber) {
         
         _allowNegativeNumber = allowNegativeNumber;
+        
+        _startedNum = _startedNum < 0 ? 0 : _startedNum;
+        _middleLabel.text = [NSString stringWithFormat:@"%i",_startedNum];
         
     }
     
@@ -198,6 +226,27 @@
         
     }
     
+}
+
+#pragma mark - UsefulMethod -
+
+- (UIImage *)setImage:(UIImage *)setImg withColor:(UIColor *)color {
+    
+    UIImage *image = setImg;
+    
+    CGRect rect = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextClipToMask(context, rect, image.CGImage);
+    CGContextSetFillColorWithColor(context, [color CGColor]);
+    CGContextFillRect(context, rect);
+    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIImage *flippedImage = [UIImage imageWithCGImage:img.CGImage
+                                                scale:1.0 orientation: UIImageOrientationDownMirrored];
+    
+    return flippedImage;
 }
 
 @end

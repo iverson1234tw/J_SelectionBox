@@ -36,8 +36,15 @@ typedef NS_ENUM(NSUInteger, J_IntroduceLabelPosition)
 @property (strong, nonatomic) UIColor *upperBtnImgColor; // 設定上方箭頭顏色
 @property (strong, nonatomic) UIColor *dowerBtnImgColor; // 設定下方箭頭顏色
 @property (strong, nonatomic) UIColor *middleTextColor; // 中間文字顏色
+@property (strong, nonatomic) UIColor *middleLabelBackgroundColor; // 中間背景色
+@property (strong, nonatomic) UIColor *upperBtnBackgroundColor; // 上按鈕背景色
+@property (strong, nonatomic) UIColor *downerBtnBackgroundColor; // 下按鈕背景色
 
-- (void)setIntroduceLabelWithText:(NSString *)text withTextColor:(UIColor *)textC withBackgroundColor:(UIColor *)backC atPosition:(J_IntroduceLabelPosition)position;
+#pragma mark - 介紹導覽列 -
+
+@property (nonatomic, assign) J_IntroduceLabelPosition j_introPositon;
+@property (nonatomic) BOOL showIntroduceLabel;
+@property (strong, nonatomic) UILabel *introduceLabel;
 
 @property (nonatomic,weak)id<J_SelectionBoxDelegate>delegate;
 

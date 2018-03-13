@@ -18,6 +18,9 @@
 		BBF5FF1920576BDF002DB9C1 /* J_SelectionBox.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF5FF1820576BDF002DB9C1 /* J_SelectionBox.m */; };
 		BBF5FF1C20576C6E002DB9C1 /* icon_keyboard_arrow_up_grey72.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF5FF1B20576C6E002DB9C1 /* icon_keyboard_arrow_up_grey72.png */; };
 		BBF5FF1E20576C7E002DB9C1 /* icon_keyboard_arrow_down_grey72.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF5FF1D20576C7D002DB9C1 /* icon_keyboard_arrow_down_grey72.png */; };
+		BBF5FF232057B1B0002DB9C1 /* OptionalCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF5FF222057B1B0002DB9C1 /* OptionalCell.m */; };
+		BBF5FF262057B905002DB9C1 /* ColorCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF5FF252057B905002DB9C1 /* ColorCell.m */; };
+		BBF5FF2A2057D46E002DB9C1 /* NoneCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF5FF292057D46E002DB9C1 /* NoneCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,13 @@
 		BBF5FF1820576BDF002DB9C1 /* J_SelectionBox.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = J_SelectionBox.m; sourceTree = "<group>"; };
 		BBF5FF1B20576C6E002DB9C1 /* icon_keyboard_arrow_up_grey72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_keyboard_arrow_up_grey72.png; sourceTree = "<group>"; };
 		BBF5FF1D20576C7D002DB9C1 /* icon_keyboard_arrow_down_grey72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_keyboard_arrow_down_grey72.png; sourceTree = "<group>"; };
+		BBF5FF212057B1B0002DB9C1 /* OptionalCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OptionalCell.h; sourceTree = "<group>"; };
+		BBF5FF222057B1B0002DB9C1 /* OptionalCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OptionalCell.m; sourceTree = "<group>"; };
+		BBF5FF242057B905002DB9C1 /* ColorCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ColorCell.h; sourceTree = "<group>"; };
+		BBF5FF252057B905002DB9C1 /* ColorCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ColorCell.m; sourceTree = "<group>"; };
+		BBF5FF272057BB31002DB9C1 /* J_SelectionBox-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "J_SelectionBox-Prefix.pch"; sourceTree = "<group>"; };
+		BBF5FF282057D46E002DB9C1 /* NoneCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NoneCell.h; sourceTree = "<group>"; };
+		BBF5FF292057D46E002DB9C1 /* NoneCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NoneCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +127,7 @@
 				BBF5FEEE20576B49002DB9C1 /* LaunchScreen.storyboard */,
 				BBF5FEF120576B49002DB9C1 /* Info.plist */,
 				BBF5FEF220576B49002DB9C1 /* main.m */,
+				BBF5FF272057BB31002DB9C1 /* J_SelectionBox-Prefix.pch */,
 			);
 			path = J_SelectionBox;
 			sourceTree = "<group>";
@@ -152,6 +163,7 @@
 		BBF5FF1620576BAF002DB9C1 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				BBF5FF202057B167002DB9C1 /* Cell */,
 				BBF5FEE620576B49002DB9C1 /* ViewController.h */,
 				BBF5FEE720576B49002DB9C1 /* ViewController.m */,
 			);
@@ -165,6 +177,19 @@
 				BBF5FF1D20576C7D002DB9C1 /* icon_keyboard_arrow_down_grey72.png */,
 			);
 			path = Ressourse;
+			sourceTree = "<group>";
+		};
+		BBF5FF202057B167002DB9C1 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				BBF5FF212057B1B0002DB9C1 /* OptionalCell.h */,
+				BBF5FF222057B1B0002DB9C1 /* OptionalCell.m */,
+				BBF5FF242057B905002DB9C1 /* ColorCell.h */,
+				BBF5FF252057B905002DB9C1 /* ColorCell.m */,
+				BBF5FF282057D46E002DB9C1 /* NoneCell.h */,
+				BBF5FF292057D46E002DB9C1 /* NoneCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,10 +327,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBF5FF2A2057D46E002DB9C1 /* NoneCell.m in Sources */,
 				BBF5FEE820576B49002DB9C1 /* ViewController.m in Sources */,
+				BBF5FF232057B1B0002DB9C1 /* OptionalCell.m in Sources */,
 				BBF5FEF320576B49002DB9C1 /* main.m in Sources */,
 				BBF5FEE520576B49002DB9C1 /* AppDelegate.m in Sources */,
 				BBF5FF1920576BDF002DB9C1 /* J_SelectionBox.m in Sources */,
+				BBF5FF262057B905002DB9C1 /* ColorCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -469,7 +497,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K2499D8WGX;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "J_SelectionBox/J_SelectionBox-Prefix.pch";
 				INFOPLIST_FILE = J_SelectionBox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JoshChen.J-SelectionBox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -482,7 +514,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K2499D8WGX;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "J_SelectionBox/J_SelectionBox-Prefix.pch";
 				INFOPLIST_FILE = J_SelectionBox/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "JoshChen.J-SelectionBox";
 				PRODUCT_NAME = "$(TARGET_NAME)";
