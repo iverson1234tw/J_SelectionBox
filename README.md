@@ -3,10 +3,10 @@ A customize selection box by Josh
 
 ![image](https://github.com/iverson1234tw/J_SelectionBox/blob/master/J_Box.png?raw=true)
 
-## J_SelectionBox information:
+## J_SelectionBox information
 J_SelectionBox supports iOS 8 and above.
 
-### How to use J_SelectionBox:
+## How to use J_SelectionBox
 1. Drag the 'Class' into your project
 2. Import 'J_SelectionBox.h'
 
