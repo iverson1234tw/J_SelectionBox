@@ -12,5 +12,7 @@ J_SelectionBox supports iOS 8 and above.
 
 The simplest way to use it:
 ```objective-c
-  J_SelectionBox *exampleBox = [[J_SelectionBox alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+  J_SelectionBox *exampleBox = [[J_SelectionBox alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];  
+  
+  [self.view addSubview:exampleBox];
 ```
