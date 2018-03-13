@@ -12,7 +12,7 @@
 #define SCREEN_WIDTH         [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT         [UIScreen mainScreen].bounds.size.height
 
-@interface ViewController () {
+@interface ViewController () <J_SelectionBoxDelegate> {
     J_SelectionBox *exampleBox1;
 }
 
@@ -25,13 +25,27 @@
     [super viewDidLoad];
 
     exampleBox1 = [[J_SelectionBox alloc]initWithFrame:CGRectMake(0, SCREEN_HEIGHT/2 - 50, SCREEN_WIDTH, 100)];
-    exampleBox1.backgroundColor = [UIColor yellowColor];
-    exampleBox1.startedNum = 0;
+    exampleBox1.delegate = self;
+    exampleBox1.backgroundColor = [UIColor orangeColor];
     exampleBox1.hideLowerArrowWhenZero = false;
     exampleBox1.allowNegativeNumber = true;
+    exampleBox1.upperBtnImgColor = [UIColor redColor];
+    exampleBox1.dowerBtnImgColor = [UIColor redColor];
+    exampleBox1.middleTextColor = [UIColor redColor];
+    
+    [exampleBox1 setIntroduceLabelWithText:@"You can set the text here" withTextColor:[UIColor redColor] withBackgroundColor:[UIColor blackColor] atPosition:J_IntroduceLabelAtTop];
     
     [self.view addSubview:exampleBox1];
 
+}
+
+#pragma mark - J_SelectionBoxDelegate -
+
+- (void)buttonValueDidChange:(UILabel *)label {
+    
+    // Do something while label's changing
+    NSLog(@"%@",label.text);
+    
 }
 
 - (void)didReceiveMemoryWarning {
