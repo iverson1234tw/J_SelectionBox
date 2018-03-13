@@ -1,6 +1,5 @@
 # J_SelectionBox
 
-一個客製化的SelectionBox
 A customize selection box by Josh
 ------------------------------
 
