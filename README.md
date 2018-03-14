@@ -7,10 +7,14 @@ A customize selection box by Josh
 J_SelectionBox supports iOS 8 and above.
 
 ## How to use J_SelectionBox
-1. Drag the 'Class' into your project
-2. Import 'J_SelectionBox.h'
+* Drag the 'Class' into your project
 
-The simplest way to use it:
+Next:
+```objective-c
+#import "J_SelectionBox.h"
+```
+
+Usage:
 ```objective-c
   J_SelectionBox *exampleBox = [[J_SelectionBox alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];  
   
