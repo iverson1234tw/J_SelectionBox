@@ -20,3 +20,44 @@ Usage:
   
   [self.view addSubview:exampleBox];
 ```
+
+## Properties
+```objective-c
+@property (strong, nonatomic) UIButton *upperBtn; // 上按鈕
+@property (strong, nonatomic) UILabel *middleLabel; // 中間Label
+@property (strong, nonatomic) UIButton *downerBtn; // 下按鈕
+
+@property (nonatomic) int startedNum; // 初始數值
+@property (nonatomic) BOOL hideLowerArrowWhenZero; // 當數值為0，下箭頭隱藏
+@property (nonatomic) BOOL allowNegativeNumber; // 允許負數
+@property (strong, nonatomic) UIColor *upperBtnImgColor; // 設定上方箭頭顏色
+@property (strong, nonatomic) UIColor *dowerBtnImgColor; // 設定下方箭頭顏色
+@property (strong, nonatomic) UIColor *middleTextColor; // 中間文字顏色
+@property (strong, nonatomic) UIColor *middleLabelBackgroundColor; // 中間背景色
+@property (strong, nonatomic) UIColor *upperBtnBackgroundColor; // 上按鈕背景色
+@property (strong, nonatomic) UIColor *downerBtnBackgroundColor; // 下按鈕背景色
+
+#pragma mark - 介紹導覽列 -
+
+@property (nonatomic, assign) J_IntroduceLabelPosition j_introPositon; // 導覽列位置
+@property (nonatomic) BOOL showIntroduceLabel; // 使否顯示介紹導覽列
+@property (strong, nonatomic) UILabel *introduceLabel; // 介紹導覽列
+```
+
+## Delegate Method
+```objective-c
+@property (nonatomic,weak)id<J_SelectionBoxDelegate>delegate;
+```
+
+Detect when the number changed
+```objective-c
+@interface ViewController () <J_SelectionBoxDelegate>
+
+#pragma mark - J_SelectionBoxDelegate -
+
+- (void)buttonValueDidChange:(UILabel *)label {
+    
+    // You can do something while label text changed
+    
+}
+```
