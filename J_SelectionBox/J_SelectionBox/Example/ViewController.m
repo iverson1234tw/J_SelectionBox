@@ -49,6 +49,7 @@
 
 - (void)setBoxes {
     
+    // 範例一
     exampleBox1 = [[J_SelectionBox alloc]initWithFrame:CGRectMake(0, _navBar.frame.origin.y + _navBar.frame.size.height + 10, ceilf(SCREEN_WIDTH/4), 120)];
     exampleBox1.delegate = self;
     exampleBox1.hideLowerArrowWhenZero = false;
@@ -67,6 +68,7 @@
     
     [self.view addSubview:exampleBox1];
     
+    // 範例二
     exampleBox2 = [[J_SelectionBox alloc]initWithFrame:CGRectMake(exampleBox1.frame.origin.x + exampleBox1.frame.size.width, exampleBox1.frame.origin.y, exampleBox1.frame.size.width, exampleBox1.frame.size.height)];
     exampleBox2.delegate = self;
     exampleBox2.hideLowerArrowWhenZero = false;
@@ -85,6 +87,7 @@
     
     [self.view addSubview:exampleBox2];
     
+    // 範例三
     exampleBox3 = [[J_SelectionBox alloc]initWithFrame:CGRectMake(exampleBox2.frame.origin.x + exampleBox2.frame.size.width, exampleBox2.frame.origin.y, exampleBox2.frame.size.width, exampleBox2.frame.size.height)];
     exampleBox3.delegate = self;
     exampleBox3.hideLowerArrowWhenZero = false;
@@ -103,6 +106,7 @@
     
     [self.view addSubview:exampleBox3];
     
+    // 範例四
     exampleBox4 = [[J_SelectionBox alloc]initWithFrame:CGRectMake(exampleBox3.frame.origin.x + exampleBox3.frame.size.width, exampleBox3.frame.origin.y, exampleBox3.frame.size.width, exampleBox3.frame.size.height)];
     exampleBox4.delegate = self;
     exampleBox4.hideLowerArrowWhenZero = false;
@@ -127,7 +131,7 @@
 
 - (void)buttonValueDidChange:(UILabel *)label {
     
-    // You can do something while label text changed
+    // You can do something when label text changed
     
 }
 
@@ -176,7 +180,7 @@
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+
     if (indexPath.row == 0) {
         
         opCell = [[OptionalCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell1"];

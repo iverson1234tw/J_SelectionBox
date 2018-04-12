@@ -9,6 +9,7 @@
 #import "J_SelectionBox.h"
 
 @implementation J_SelectionBox {
+    NSTimer *timer; // 快速加減定時器
     UIImageView *upArrow;
     UIImageView *downArrow;
 }
@@ -50,10 +51,115 @@
         downArrow.userInteractionEnabled = NO;
         
         [_downerBtn addSubview:downArrow];
-                
+        
+        UILongPressGestureRecognizer *upLongPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(upLongPress:)];
+        [_upperBtn addGestureRecognizer:upLongPress];
+        
+        UILongPressGestureRecognizer *downLongPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(downLongPress:)];
+        [_downerBtn addGestureRecognizer:downLongPress];
+        
+        _longPressDurationTime = 0.05; // 預設0.05秒
+        
     }
     
     return self;
+}
+
+// 單次點擊加減
+- (void)numberChange:(UIButton *)sender {
+    
+    if (sender.tag == 1) {
+        
+        [self increase];
+        
+    } else {
+        
+        [self decrease];
+        
+    }
+    
+}
+
+// 長按加
+- (void)upLongPress:(UILongPressGestureRecognizer *)gesture {
+    
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        
+        NSLog(@"Long Press Began");
+        
+        timer = [NSTimer scheduledTimerWithTimeInterval:_longPressDurationTime target:self selector:@selector(increase) userInfo:nil repeats:YES];
+        
+        [timer fire];
+        
+    }
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        
+        NSLog(@"Long Press Stop");
+        
+        [timer invalidate];
+        
+    }
+    
+}
+
+// 長按減
+- (void)downLongPress:(UILongPressGestureRecognizer *)gesture {
+    
+    if (gesture.state == UIGestureRecognizerStateBegan) {
+        
+        NSLog(@"Long Press Began");
+        
+        timer = [NSTimer scheduledTimerWithTimeInterval:_longPressDurationTime target:self selector:@selector(decrease) userInfo:nil repeats:YES];
+        
+        [timer fire];
+        
+    }
+    
+    if (gesture.state == UIGestureRecognizerStateEnded) {
+        
+        NSLog(@"Long Press Stop");
+        
+        [timer invalidate];
+        
+    }
+    
+}
+
+#pragma mark - 加減邏輯 -
+
+- (void)increase {
+    
+    _startedNum = [[_middleLabel text] intValue];
+    
+    _startedNum = _startedNum + 1;
+    
+    [_middleLabel setText:[NSString stringWithFormat:@"%i",_startedNum]];
+    [self changeValue:_middleLabel];
+    
+}
+
+- (void)decrease {
+    
+    _startedNum = [[_middleLabel text] intValue];
+    
+    _startedNum = _allowNegativeNumber ? _startedNum - 1 : (_startedNum == 0 ? _startedNum : _startedNum - 1);
+    
+    // 當 _hideLowerArrowWhenZero == true , 歸零時要隱藏下按鈕
+    [_downerBtn setHidden:_hideLowerArrowWhenZero ? (_startedNum == 0 ? YES : NO) : NO];
+    [_middleLabel setText:[NSString stringWithFormat:@"%i",_startedNum]];
+    [self changeValue:_middleLabel];
+    
+}
+
+- (void)setLongPressDurationTime:(CGFloat)longPressDurationTime {
+    
+    if (_longPressDurationTime != longPressDurationTime) {
+        
+        _longPressDurationTime = longPressDurationTime;
+        
+    }
+    
 }
 
 #pragma mark - 設置上/下介紹文字 -
@@ -154,9 +260,9 @@
 - (void)setUpperBtnBackgroundColor:(UIColor *)upperBtnBackgroundColor {
     
     if (_upperBtn.backgroundColor != upperBtnBackgroundColor) {
-        
+     
         _upperBtn.backgroundColor = upperBtnBackgroundColor;
-        
+     
     }
     
 }
@@ -193,26 +299,6 @@
         _middleLabel.text = [NSString stringWithFormat:@"%i",_startedNum];
         
     }
-    
-}
-
-- (void)numberChange:(UIButton *)sender {
-    
-    _startedNum = [[_middleLabel text] intValue];
-    
-    if (sender.tag == 1) {
-        
-        _startedNum = _startedNum + 1;
-        
-    } else {
-        
-        _startedNum = _allowNegativeNumber ? _startedNum - 1 : (_startedNum == 0 ? _startedNum : _startedNum - 1);
-        
-    }
-    
-    [_downerBtn setHidden:_hideLowerArrowWhenZero ? (_startedNum == 0 ? YES : NO) : NO];
-    [_middleLabel setText:[NSString stringWithFormat:@"%i",_startedNum]];
-    [self changeValue:_middleLabel];
     
 }
 

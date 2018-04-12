@@ -26,6 +26,8 @@ typedef NS_ENUM(NSUInteger, J_IntroduceLabelPosition)
 
 @interface J_SelectionBox : UIView
 
+@property (nonatomic,weak)id<J_SelectionBoxDelegate>delegate;
+
 @property (strong, nonatomic) UIButton *upperBtn;
 @property (strong, nonatomic) UILabel *middleLabel;
 @property (strong, nonatomic) UIButton *downerBtn;
@@ -40,12 +42,13 @@ typedef NS_ENUM(NSUInteger, J_IntroduceLabelPosition)
 @property (strong, nonatomic) UIColor *upperBtnBackgroundColor; // 上按鈕背景色
 @property (strong, nonatomic) UIColor *downerBtnBackgroundColor; // 下按鈕背景色
 
+#pragma mark - 長按加減 -
+@property (nonatomic, assign) CGFloat longPressDurationTime; // 長按的加減時間間隔
+
 #pragma mark - 介紹導覽列 -
 
 @property (nonatomic, assign) J_IntroduceLabelPosition j_introPositon;
 @property (nonatomic) BOOL showIntroduceLabel;
 @property (strong, nonatomic) UILabel *introduceLabel;
-
-@property (nonatomic,weak)id<J_SelectionBoxDelegate>delegate;
 
 @end
