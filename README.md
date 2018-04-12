@@ -14,7 +14,7 @@ Next:
 #import "J_SelectionBox.h"
 ```
 
-Usage:
+Simple Usage:
 ```objective-c
   J_SelectionBox *exampleBox = [[J_SelectionBox alloc]initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];  
   
@@ -37,6 +37,9 @@ Usage:
 @property (strong, nonatomic) UIColor *upperBtnBackgroundColor; // 上按鈕背景色
 @property (strong, nonatomic) UIColor *downerBtnBackgroundColor; // 下按鈕背景色
 
+@property (nonatomic) BOOL enableLongPress; // 是否開啟長按快速加減功能
+@property (nonatomic, assign) CGFloat longPressDurationTime; // 長按的加減時間間隔，預設0.01秒
+
 #pragma mark - 介紹導覽列 -
 
 @property (nonatomic, assign) J_IntroduceLabelPosition j_introPositon; // 導覽列位置
@@ -57,7 +60,7 @@ Detect when the number changed
 
 - (void)buttonValueDidChange:(UILabel *)label {
     
-    // You can do something while label text changed
+    // You can do something here when label text changed
     
 }
 ```
