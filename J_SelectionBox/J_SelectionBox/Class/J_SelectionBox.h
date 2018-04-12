@@ -43,6 +43,7 @@ typedef NS_ENUM(NSUInteger, J_IntroduceLabelPosition)
 @property (strong, nonatomic) UIColor *downerBtnBackgroundColor; // 下按鈕背景色
 
 #pragma mark - 長按加減 -
+@property (nonatomic) BOOL enableLongPress; // 是否開啟長按快速加減功能
 @property (nonatomic, assign) CGFloat longPressDurationTime; // 長按的加減時間間隔
 
 #pragma mark - 介紹導覽列 -

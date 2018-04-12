@@ -65,6 +65,7 @@
     exampleBox1.introduceLabel.backgroundColor = [UIColor blackColor];
     exampleBox1.introduceLabel.text = @"Box1";
     exampleBox1.introduceLabel.textColor = [UIColor whiteColor];
+    exampleBox1.enableLongPress = true;
     
     [self.view addSubview:exampleBox1];
     
@@ -84,6 +85,7 @@
     exampleBox2.introduceLabel.backgroundColor = [UIColor grayColor];
     exampleBox2.introduceLabel.text = @"Box2";
     exampleBox2.introduceLabel.textColor = [UIColor whiteColor];
+    exampleBox2.enableLongPress = true;
     
     [self.view addSubview:exampleBox2];
     
@@ -103,6 +105,7 @@
     exampleBox3.introduceLabel.backgroundColor = [UIColor lightGrayColor];
     exampleBox3.introduceLabel.text = @"Box3";
     exampleBox3.introduceLabel.textColor = [UIColor whiteColor];
+    exampleBox3.enableLongPress = true;
     
     [self.view addSubview:exampleBox3];
     
@@ -122,6 +125,7 @@
     exampleBox4.introduceLabel.backgroundColor = J_Gray;
     exampleBox4.introduceLabel.text = @"Box4";
     exampleBox4.introduceLabel.textColor = [UIColor whiteColor];
+    exampleBox4.enableLongPress = true;
     
     [self.view addSubview:exampleBox4];
     

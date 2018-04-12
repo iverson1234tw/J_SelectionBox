@@ -52,17 +52,33 @@
         
         [_downerBtn addSubview:downArrow];
         
-        UILongPressGestureRecognizer *upLongPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(upLongPress:)];
-        [_upperBtn addGestureRecognizer:upLongPress];
-        
-        UILongPressGestureRecognizer *downLongPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(downLongPress:)];
-        [_downerBtn addGestureRecognizer:downLongPress];
-        
-        _longPressDurationTime = 0.05; // 預設0.05秒
-        
     }
     
     return self;
+}
+
+- (void)addLongPressGestureToBtn {
+    
+    UILongPressGestureRecognizer *upLongPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(upLongPress:)];
+    UILongPressGestureRecognizer *downLongPress = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(downLongPress:)];
+    
+    [_upperBtn addGestureRecognizer:upLongPress];
+    [_downerBtn addGestureRecognizer:downLongPress];
+    
+    _longPressDurationTime = 0.01; // 預設0.01秒
+    
+}
+
+- (void)setEnableLongPress:(BOOL)enableLongPress {
+    
+    if (_enableLongPress != enableLongPress) {
+        
+        _enableLongPress = enableLongPress;
+        
+        [self addLongPressGestureToBtn];
+        
+    }
+    
 }
 
 // 單次點擊加減
